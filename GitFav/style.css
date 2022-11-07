@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --hue: 240;
+    --bg-color: hsl(var(--hue), 4%, 9%);
+}
+
+body {
+    background: var(--bg-color);
+}
