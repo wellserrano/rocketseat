@@ -2,13 +2,174 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 :root {
     --hue: 240;
-    --bg-color: hsl(var(--hue), 4%, 9%);
+    --bg-color: hsl(0, 0%, 0%);
+    --ff-color: hsl(var(--hue), 9%, 89%);
+    font-size: 62.5%;
 }
 
 body {
     background: var(--bg-color);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 4.5rem;
+}
+
+.searchbox {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+
+.searchbox input {
+    background-color: hsl(194, 65%, 7%);
+    border-radius: .5rem;
+    border: none;
+    width: 46rem;
+    height: 4.8rem;
+    padding: 1rem;
+    color: rgb(201, 193, 193);
+    font-size: 2rem;
+}
+
+.searchbox button {
+    color: hsl(var(--hue), 0%, 100%);
+    background: none;
+    align-items: center;
+    display: flex;
+    gap: .8rem;
+    padding: 1.2rem 3.2rem;
+    background-color: hsla(195, 91%, 25%, 1);
+    width: 17rem;
+    height: 4.8rem;
+    border-radius: .5rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    white-space: nowrap;
+    clip: rect(0, 0, 0, 0);
+    border-width: 0;
+}
+
+#app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 1rem 2rem -1rem rgba(43, 41, 41, 0.5);
+}
+
+table th {
+    font-size: 2rem;
+    line-height: 3.2rem;
+    font-weight: 700;
+    background-color: hsl(194, 70%, 13%);
+    padding: 1.6rem 2.4rem 1.6rem 4rem;
+    text-align: left;
+}
+
+table td {
+    padding: 1.5rem;
+    text-align: left;
+}
+
+tr {
+    color: #E1E1E6;
+}
+
+td {
+    color: var(-ff-color);
+}
+
+td.user {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+td.user img {
+    width: 6rem;
+    height: 6rem;
+
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+td.user a {
+    text-decoration: none;
+    color: #E1E1E6;
+}
+
+td.user a p {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+td.user span {
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+td .remove {
+    background: none;
+    border: none;
+
+    color: red;
+}
+
+table th:first-child {
+    border-top-left-radius: .2rem;
+    width: 50rem;
+}
+table th {
+    width: 22rem;
+}
+
+table th:last-child {
+    border-top-right-radius: .2rem;
+    width: 17.8rem;
+}
+
+table tr:nth-child(even) {
+  background: rgba(27, 21, 21, 0.904);
+}
+
+table tr:nth-child(odd) {
+  background: hsl(194, 64%, 6%);
+}
+
+.repositories, .followers {
+    font-size: 2rem;
+    padding-left: 5rem;
+}
+
+td button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    font-weight: bold;
+  
+    color: #F75A68;
+    padding-left: 3rem;
+    cursor: pointer;
 }
