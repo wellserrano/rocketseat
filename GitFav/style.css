@@ -219,7 +219,8 @@ td button {
     justify-content: center;
     margin: 0 auto;
     gap: 6rem;
-    height: 35rem;
+    height: 32.5rem;
+    min-width: 112.75rem;
 }
 
 .panel p {
