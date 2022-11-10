@@ -31,7 +31,7 @@ In the future, I plan to create more interactions and work on the way these "min
 
 ## Roadmap
 
-- Melhorar o suporte de navegadores
+- Include previous projects from the course which added significant knowledge to my repertoire
 
-- Adicionar mais integrações
+- Once the course is concluded, create interactios for "mini-projects" navigation
 
