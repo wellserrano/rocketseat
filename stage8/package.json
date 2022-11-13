@@ -1,0 +1,21 @@
+{
+  "name": "stage8",
+  "version": "1.0.0",
+  "description": "List your favorite movies",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1"
+  }
+}
