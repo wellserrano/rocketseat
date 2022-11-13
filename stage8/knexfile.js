@@ -11,5 +11,7 @@ module.exports = {
 
   pool: {
     afterCreate: (connection, callback) => connection.run("PRAGMA foreign_keys = ON", callback)
-  }
+  },
+
+  useNullAsDefault: true
 };
