@@ -6,6 +6,7 @@ const UsersControllers = require("../controllers/UsersControllers")
 const usersControllers = new UsersControllers();
 
 usersRoutes.get("/-", usersControllers.checkStatus);
+usersRoutes.get("/", usersControllers.read);
 usersRoutes.post("/", usersControllers.create);
 usersRoutes.put("/:user_id", usersControllers.update);
 
