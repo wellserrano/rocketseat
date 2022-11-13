@@ -4,7 +4,7 @@ const AppError = require("../utils/AppError")
 
 class UsersControllers {
   async checkStatus(req, res) {
-    res.json({message: 'Server OK'})
+    res.json({message: 'Route OK'})
   }
 
   async create(req, res) {
@@ -35,7 +35,72 @@ class UsersControllers {
 
     return res.status(201).json();
 
-  }
-}
+  };
+
+  async update(req, res) {
+    const { name, email, old_password, new_password, avatar } = req.body;
+    const { user_id } = req.params;
+
+    const db = await sqliteConn();
+
+    const user = await db.get(`
+      SELECT name, email, password, avatar 
+      FROM users
+      WHERE id = ?
+      `,
+      [user_id]
+    );
+
+    const userWithUpdatedEmail = await db.get(`
+      SELECT id, email
+      FROM users
+      WHERE email = ?
+      `,
+      [email]
+    );
+
+    
+    
+    if (!user) {
+      throw new AppError(`User with id ${user_id} not found`, 404);
+    };
+        
+    if (userWithUpdatedEmail && user.id !== userWithUpdatedEmail.id) {
+      throw new AppError(`Email already in use`, 400);
+    };
+
+    let hashedPassword;
+
+    if (old_password && new_password) {
+      const checkOldPassword = await compare(old_password, user.password);
+      hashedPassword = await hash(new_password, 8);
+
+      if (!checkOldPassword) throw new AppError(`Your current password is incorrect`, 400);
+    };
+        
+    await db.run(`
+      UPDATE 
+        users
+      SET 
+        name =?, 
+        email =?, 
+        password =?, 
+        avatar =?, 
+        updated_at = DATETIME('now')
+      WHERE 
+        id =?
+      `,
+      [ 
+        name ?? user.name, 
+        email ?? user.email, 
+        hashedPassword ?? user.password, 
+        avatar ?? user.avatar, 
+        user_id
+      ]);
+
+    return res.status(200).json();
+
+  };
+};
 
 module.exports = UsersControllers;
