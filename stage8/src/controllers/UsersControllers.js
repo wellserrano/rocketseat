@@ -85,6 +85,18 @@ class UsersControllers {
     return res.status(200).json();
 
   };
+
+  async delete(req, res) {
+    const { user_id } = req.params;
+
+    await knex("users")
+     .where({ id: user_id })
+     .del()
+     .catch( err => {throw new ErrorApp('User not found', 404)}); //catch isn't working
+
+    res.json();
+
+  };
 };
 
 module.exports = UsersControllers;
