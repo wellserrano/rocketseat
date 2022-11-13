@@ -9,6 +9,10 @@ module.exports = {
     }
   },
 
+  migrations: {
+    directory: path.resolve(__dirname, "src", "database", "knex", "migrations")
+  },
+
   pool: {
     afterCreate: (connection, callback) => connection.run("PRAGMA foreign_keys = ON", callback)
   },
