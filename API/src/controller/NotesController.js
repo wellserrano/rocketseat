@@ -89,16 +89,20 @@ class NotesController {
 			};
 
 			const userTags = await knex("tags").where({ user_id });
+			console.log('userTags', userTags)
 			
 			const notesWithTags = notes.map( note => {
 				const noteTags = userTags.filter( tag => tag.note_id === note.id);
+				console.log('noteTags', noteTags)
 				return {
 					...note,
 					tags: noteTags
 				}
-			
-			});
 
+				
+			});
+			
+			console.log('notesWithTags', notesWithTags)
 			return res.json(notesWithTags);
 
 	};
