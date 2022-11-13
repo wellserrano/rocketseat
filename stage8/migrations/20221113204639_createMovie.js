@@ -5,7 +5,7 @@ exports.up = knex => knex.schema.createTable("movies",
     table.text("description");
     table.integer("year").notNullable();
     table.text("director");
-    table.integer("rating");
+    table.integer("rating").default(0);
     table.timestamp("created_at").default(knex.fn.now());
     table.timestamp("updated_at").default(knex.fn.now());
   }
