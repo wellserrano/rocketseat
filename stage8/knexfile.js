@@ -6,16 +6,17 @@ module.exports = {
     client: 'sqlite3',
     connection: {
       filename: path.resolve(__dirname, "src", "database", "database.db")
-    }
-  },
+    },
 
-  migrations: {
-    directory: path.resolve(__dirname, "src", "database", "knex", "migrations")
-  },
+    migrations: {
+      directory: path.resolve(__dirname, "src", "database", "knex", "migrations")
+    },
 
-  pool: {
-    afterCreate: (connection, callback) => connection.run("PRAGMA foreign_keys = ON", callback)
-  },
+    pool: {
+      afterCreate: (connection, callback) => connection.run("PRAGMA foreign_keys = ON", callback)
+    },
+    
+    useNullAsDefault: true
 
-  useNullAsDefault: true
+  },
 };
