@@ -9,14 +9,23 @@ import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
 //Design
 import { Container, Form, Background } from './styles'
 
-export function SignIn() {
+export function SignUp() {
   return (
     <Container>
+
+      <Background/>
+
       <Form>
         <h1>Rocket Notes</h1>
         <p>Aplicação para salvar e gerenciar seus links úteis</p>
 
-        <h2>Faça seu login</h2>
+        <h2>Crie sua conta</h2>
+
+        <Input
+          placeholder="Nome"
+          type="text"
+          icon={FiLogIn}
+        />
 
         <Input
           placeholder="E-mail"
@@ -30,12 +39,11 @@ export function SignIn() {
           icon={FiLock}
         />
 
-        <Button title="Entrar"/>
-        <ButtonText title="Criar conta" id="buttontext-main-page"/>
+        <Button title="Cadastrar"/>
+        <ButtonText title="Voltar" id="buttontext-main-page"/>
       </Form>
 
 
-      <Background/>
     </Container>
   )
 }
