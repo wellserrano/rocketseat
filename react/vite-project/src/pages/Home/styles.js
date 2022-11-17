@@ -40,7 +40,6 @@ export const Menu = styled.ul`
 
   text-align: center;
   
-  /* background-color: red; */
   background-color: ${ ({ theme }) => theme.COLORS.BACKGROUND_900 };
 
   list-style: none;
@@ -53,13 +52,16 @@ export const Menu = styled.ul`
 
 export const Search  = styled.div`
   grid-area: search;
-  /* background-color: yellow; */
+
+  padding: 64px;
 
 ` 
 
 export const Content = styled.div`
   grid-area: content;
-  /* background-color: green; */
+
+  padding: 0 64px;
+  overflow-y: auto;
 
 ` 
 
@@ -70,7 +72,6 @@ export const NewNote = styled.button`
   align-items: center;
   justify-content: center;
 
-  /* background-color: blue; */
   background-color: ${ ({ theme }) => theme.COLORS.ORANGE };
 
   text-align: center;
