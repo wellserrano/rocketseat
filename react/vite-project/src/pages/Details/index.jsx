@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Container, Links, Content } from './styles'
 import { Button } from '../../components/Button'
 import { ButtonText } from '../../components/ButtonText'
@@ -39,7 +40,9 @@ export function Details() {
           <Tag title="NodeJS"/>
         </Section>
         
-        <Button title="Voltar"/>
+          <Link to="/">
+            <Button title="Voltar"/>
+          </Link>
 
         </Content>
       </main>

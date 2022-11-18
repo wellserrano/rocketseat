@@ -18,7 +18,7 @@ export function New() {
           
           <header>
             <h1>Criar nota</h1>
-            <ButtonText title="voltar"/>
+            <ButtonText to="/" title="voltar"/>
           </header>
           
           <Input type="text" placeholder="Título"/>
