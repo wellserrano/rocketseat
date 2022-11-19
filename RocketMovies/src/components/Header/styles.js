@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
+  grid-area: header;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,18 +43,18 @@ export const Profile = styled.div`
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
-}
-
+  
     p {
       font-weight: 700;
       color: ${ ({ theme }) => theme.COLORS.SAMPLE_A };
-    }
+    };
 
     a {
       font-weight: 400;
       color: ${ ({ theme }) => theme.COLORS.SAMPLE_C };
-    }
-  }
+    };
+
+  };
 
   > img {
     width: 74px;

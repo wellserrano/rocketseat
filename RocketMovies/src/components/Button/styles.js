@@ -7,6 +7,7 @@ export const Container = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  align-content: center;
 
   background-color: ${ ({ theme }) => theme.COLORS.SAMPLE_D };
   border: none;
@@ -16,5 +17,10 @@ export const Container = styled.button`
   font-weight: 500;
   line-height: 21px;
   color: ${ ({ theme }) => theme.COLORS.SAMPLE_E };
+
+  svg {
+    color: ${ ({ theme }) => theme.COLORS.BACKGROUND_800 };
+    margin-right: 10px;
+  }
 
 `;
