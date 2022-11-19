@@ -6,16 +6,10 @@ export const Container = styled.div`
 
   display: flex;
   align-items: center;
-`;
+  `;
 
 export const Form = styled.form`
   padding: 30px 160px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 
   > h1 {
     font-size: 48px;
@@ -44,7 +38,12 @@ export const Form = styled.form`
 
   };
 
-  #textbutton-back {
+  #button-login {
+    margin-top: 24px;
+  };
+
+  #textbutton-register {
+    padding: 0 auto;
     margin-top: 42px;
   };
 `;

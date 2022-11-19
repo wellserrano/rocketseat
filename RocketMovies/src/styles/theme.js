@@ -8,6 +8,7 @@ export default {
     SAMPLE_D: "#FF859B",
     SAMPLE_C: "#948F99",
     SAMPLE_E: "#312E38",
+    SAMPLE_F: "#272024",
 
     DARK: "#0D0C0F",
 
