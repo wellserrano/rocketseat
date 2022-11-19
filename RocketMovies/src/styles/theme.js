@@ -10,6 +10,8 @@ export default {
     SAMPLE_E: "#312E38",
     SAMPLE_F: "#272024",
 
+    BORDER: "#3E3B47",
+
     DARK: "#0D0C0F",
 
   }
