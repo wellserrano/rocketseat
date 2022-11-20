@@ -1,8 +1,8 @@
 import { Container } from './styles';
 
-export function Button({icon: Icon, title, ...rest}) {
+export function Button({isDelete=false, icon: Icon, title, ...rest}) {
   return (
-    <Container {...rest}>
+    <Container isDelete={isDelete} {...rest}>
       {Icon && <Icon />}
       { title }
     </Container>  

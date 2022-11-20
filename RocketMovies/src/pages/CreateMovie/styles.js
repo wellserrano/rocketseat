@@ -36,6 +36,10 @@ export const Form = styled.form`
   .tag-creator {
     width: 100%;
     min-height: 90px;
+
+    display: flex;
+    align-items: center;
+
     background-color: ${ ({ theme }) => theme.COLORS.DARK };
 
     margin-block: 24px 40px;
@@ -45,7 +49,6 @@ export const Form = styled.form`
   };
 
   .button-wrapper {
-    background-color: red;
     display: flex;
     justify-content: space-between;
     gap: 10px;

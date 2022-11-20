@@ -9,14 +9,14 @@ export const Container = styled.button`
   justify-content: center;
   align-content: center;
 
-  background-color: ${ ({ theme }) => theme.COLORS.SAMPLE_D };
+  background-color: ${ ({ theme, isDelete }) => isDelete ? theme.COLORS.DARK : theme.COLORS.SAMPLE_D };
   border: none;
   border-radius: 10px;
 
   font-size: 16px;
   font-weight: 500;
   line-height: 21px;
-  color: ${ ({ theme }) => theme.COLORS.SAMPLE_E };
+  color: ${ ({ theme, isDelete }) => isDelete? theme.COLORS.SAMPLE_D : theme.COLORS.SAMPLE_E };
 
   svg {
     color: ${ ({ theme }) => theme.COLORS.BACKGROUND_800 };
