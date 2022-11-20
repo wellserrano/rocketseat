@@ -22,6 +22,7 @@ export const Container = styled.div`
 
   > svg {
     font-size: 24px;
-    margin-left: 16px;
+    margin: 16px;
+
   }
 `;
