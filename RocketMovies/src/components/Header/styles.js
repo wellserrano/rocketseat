@@ -62,5 +62,11 @@ export const Profile = styled(Link)`
     height: 74px;
     border-radius: 50%;
   }
+
+  &:hover {
+    filter: none;
+    cursor: auto;
+  }
+  
 `;
 
