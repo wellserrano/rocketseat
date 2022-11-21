@@ -40,7 +40,7 @@ export function SignUp() {
         />
 
         <Button title="Cadastrar"/>
-        <ButtonText title="Voltar" id="buttontext-main-page"/>
+        <ButtonText to="/" title="Voltar" id="buttontext-main-page"/>
       </Form>
 
 

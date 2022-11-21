@@ -31,7 +31,11 @@ export function SignIn() {
         />
 
         <Button title="Entrar"/>
-        <ButtonText title="Criar conta" id="buttontext-main-page"/>
+        <ButtonText 
+         to="/register" 
+         title="Criar conta" 
+         id="buttontext-main-page"
+        />
       </Form>
 
 
