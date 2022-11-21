@@ -13,6 +13,7 @@ export default {
     BORDER: "#3E3B47",
     FF_MOVIE_DESCRIPTION: "#999591",
     FF_TAG: "#E5E5E5",
+    BG_TAG: "#282124",
     STAR: "#F3BBC5",
 
     DARK: "#0D0C0F",
