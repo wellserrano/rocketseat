@@ -17,7 +17,7 @@ export function CreateMovie() {
 
       <Form>
 
-        <TextButton title="Voltar" icon={ FiArrowLeft } />
+        <TextButton title="Voltar" icon={ FiArrowLeft } to="/" />
 
         <h1>Novo filme</h1>
 
@@ -31,7 +31,7 @@ export function CreateMovie() {
         <h2>Marcadores</h2>
         <div className="tag-creator">
           <TagItem title="React"/>
-          <TagItem title="Novo marcador" isNew/>
+          <TagItem title="Novo marcador" isDelete/>
         </div>
 
         <div className="button-wrapper">

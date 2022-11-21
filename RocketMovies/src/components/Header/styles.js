@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.header`
@@ -28,7 +29,7 @@ export const Brand = styled.div`
   color: ${ ({ theme }) => theme.COLORS.SAMPLE_D };
 `;
 
-export const Profile = styled.div`
+export const Profile = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,9 +57,10 @@ export const Profile = styled.div`
 
   };
 
-  > img {
+  img {
     width: 74px;
     height: 74px;
     border-radius: 50%;
   }
 `;
+

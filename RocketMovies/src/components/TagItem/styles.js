@@ -13,12 +13,12 @@ export const Container = styled.div`
   justify-content: center;
   align-content: center;
   
-  color: ${ ({ theme, isNew }) => isNew ? theme.COLORS.SAMPLE_C : theme.COLORS.SAMPLE_A };
-  background-color: ${ ({ theme, isNew }) => isNew ? 'transparent' : theme.COLORS.BACKGROUND_700 };
+  color: ${ ({ theme, isDelete }) => isDelete ? theme.COLORS.SAMPLE_C : theme.COLORS.SAMPLE_A };
+  background-color: ${ ({ theme, isDelete }) => isDelete ? 'transparent' : theme.COLORS.BACKGROUND_700 };
 
   border-radius: 10px;
 
-  border: ${ ({ theme, isNew }) => isNew ? `1px dashed ${theme.COLORS.SAMPLE_C}` : 'none' };
+  border: ${ ({ theme, isDelete }) => isDelete ? `1px dashed ${theme.COLORS.SAMPLE_C}` : 'none' };
 
   > svg {
     font-size: 24px;

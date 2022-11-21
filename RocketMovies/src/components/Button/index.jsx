@@ -1,10 +1,12 @@
-import { Container } from './styles';
+import { Container, ButtonCreator } from './styles';
 
 export function Button({isDelete=false, icon: Icon, title, ...rest}) {
   return (
-    <Container isDelete={isDelete} {...rest}>
-      {Icon && <Icon />}
-      { title }
+    <Container  {...rest}>
+      <ButtonCreator isDelete={isDelete}>
+        {Icon && <Icon />}
+        { title }
+      </ButtonCreator>
     </Container>  
   );
 }

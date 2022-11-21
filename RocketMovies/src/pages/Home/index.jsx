@@ -14,7 +14,7 @@ export function Home() {
 
       <TitleAndButton>
         <h1>Meus filmes</h1>
-        <Button title="Adicionar filme" icon={ FiPlus }/>
+        <Button title="Adicionar filme" icon={ FiPlus } to="/new"/>
       </TitleAndButton>
 
       <Content>

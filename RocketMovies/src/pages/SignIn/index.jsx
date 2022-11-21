@@ -22,7 +22,7 @@ export function SignIn() {
         
         <Button title="Entrar" type="button" id="button-login"/>
 
-        <TextButton title="Criar conta" id="textbutton-register"/>
+        <TextButton title="Criar conta" id="textbutton-register" to="/register" />
 
       </Form>
       <Background/>

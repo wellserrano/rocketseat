@@ -3,15 +3,15 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
 
-  > form > div:first-child {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
 `;
 
 export const Form = styled.form`
   padding: 40px 123px 80px;
+
+  > a {
+    width: 100%;
+    justify-content: flex-start;
+  }
   
   > h1 {
     margin-top: 24px;

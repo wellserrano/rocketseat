@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const Container = styled.button`
+export const ButtonCreator = styled.button`
   width: 340px;
   height: 56px;
 
@@ -16,11 +17,12 @@ export const Container = styled.button`
   font-size: 16px;
   font-weight: 500;
   line-height: 21px;
-  color: ${ ({ theme, isDelete }) => isDelete? theme.COLORS.SAMPLE_D : theme.COLORS.SAMPLE_E };
+  color: ${ ({ theme, isDelete }) => isDelete ? theme.COLORS.SAMPLE_D : theme.COLORS.SAMPLE_E };
 
   svg {
     color: ${ ({ theme }) => theme.COLORS.BACKGROUND_800 };
     margin-right: 10px;
   }
-
 `;
+
+export const Container = styled(Link)``;

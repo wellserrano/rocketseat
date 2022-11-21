@@ -12,7 +12,7 @@ export function Profile() {
   return (
     <Container>
       <header>
-        <TextButton title="Voltar" icon={ FiArrowLeft }/>
+        <TextButton title="Voltar" icon={ FiArrowLeft } to="/" />
       </header>
       <Form>
 
