@@ -9,8 +9,6 @@ function ensureAuthenticated(req, res, next) {
     throw new AppError("JWT Token Required", 401);
   }
 
-  console.log(authHeader)
-
   const [, token] = authHeader.split(" ");
 
 
