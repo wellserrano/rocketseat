@@ -4,7 +4,7 @@ const AppError = require("../utils/AppError")
 class FavoriteMoviesControllers {
 
   async read(req, res) {
-    const { user_id } = req.params;
+    const user_id = req.user.id;
 
     const favoriteMovies = 
       await knex("userMovies")
@@ -26,7 +26,8 @@ class FavoriteMoviesControllers {
   };
 
   async create(req, res) {
-    const { user_id, movie_id, rating } = req.body;
+    const { movie_id, rating } = req.body;
+    const user_id = req.user.id;
 
     const checkFavMovie = await knex("userMovies")
       .where({ user_id, movie_id })
@@ -45,7 +46,8 @@ class FavoriteMoviesControllers {
   };
 
   async update(req, res) {
-    const { user_id, movie_id, rating } = req.body;
+    const { movie_id, rating } = req.body;
+    const user_id = req.user.id;
 
     await knex("userMovies")
      .where({ user_id, movie_id })

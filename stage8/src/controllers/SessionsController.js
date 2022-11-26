@@ -23,7 +23,13 @@ class SessionsController {
       throw new AppError('Usuário ou senha incorretos', 401)
     };
 
-    return res.json(user);
+    const { secret, expiresIn } = authConfig.jwt;
+    const token = sign({}, secret, {
+      subject: String(user.id),
+      expiresIn
+    })
+
+    return res.json({user, token});
   };
 };
 
