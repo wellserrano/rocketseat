@@ -14,7 +14,7 @@ const MULTER = {
 
       return callback(null, fileName)
     }
-  })
+  }),
 };
 
 module.exports = {
