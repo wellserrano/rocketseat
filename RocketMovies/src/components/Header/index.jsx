@@ -19,6 +19,6 @@ export function Header() {
           <img src="http://github.com/wellserrano.png" alt="Imagem do usuário" />
         </Link>
       </Profile>
-    </Container>    
+    </Container>
   );
 };
