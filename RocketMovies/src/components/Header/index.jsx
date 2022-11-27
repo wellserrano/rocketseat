@@ -13,7 +13,7 @@ export function Header() {
           <Link to="/profile">
             <p>Wellington Serrano</p>
           </Link>
-          <Link to="/fff">sair</Link>
+          <Link to="/">sair</Link>
         </div>
         <Link to="/profile">
           <img src="http://github.com/wellserrano.png" alt="Imagem do usuário" />
