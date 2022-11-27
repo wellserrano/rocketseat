@@ -40,7 +40,7 @@ class UsersControllers {
   }
 
   async update(req, res) {
-    const { name, email, old_password, new_password, avatar } = req.body;
+    const { name, email, old_password, new_password, } = req.body;
     const user_id = req.user.id;
 
     const user = await knex("users")
@@ -77,7 +77,6 @@ class UsersControllers {
         name: name ?? user.name,
         email: email ?? user.email,
         password: hashedPassword ?? user.password,
-        avatar: avatar ?? user.avatar,
         updated_at: knex.fn.now()
       });
 
