@@ -11,9 +11,10 @@ function AuthProvider({ children }) {
 
     try {
       const response = await api.post("/sessions", { email, password })
-      const { user, token } = response;
+      const { user, token } = response.data
 
       api.defaults.headers.authorization = `Bearer ${token}`
+
       setData({ user, token })
       
     } catch (error) {
@@ -38,5 +39,5 @@ function useAuth() {
   return context
 }
 
-export { AuthProvider, useAuth }
+export { AuthProvider, useAuth };
 
