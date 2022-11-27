@@ -8,7 +8,7 @@ class UsersControllers {
   }
 
   async create(req, res) {
-    const { name, email, password, avatar } = req.body;
+    const { name, email, password } = req.body;
 
     const checkUserExists = await knex("users")
       .where({ email })
@@ -25,7 +25,6 @@ class UsersControllers {
         name,
         email,
         password: hashedPassword,
-        avatar: avatar ?? null
       });
 
     return res.status(201).json();
