@@ -12,15 +12,24 @@ import { TextButton } from "../../components/TextButton"
 import { TagItem } from "../../components/TagItem";
 
 export function CreateMovie() {
-  const [movies, setMovies] = useState([]);
-  const [newMovie, setNewMovie] = useState('');
+  const [title, setTitle] = useState('');
+  const [grade, setGrade] = useState('');
+  const [description, setDescription] = useState('');
+  const [tags, setTags] = useState([]);
+  const [newTag, setNewTag] = useState('');
 
-  function handleAddMovie() {
-    setMovies( prevState => [...prevState, newMovie]);
-    setNewMovie('');
+  function handleAddTag() {
+    if (!newTag) return;
+    
+    setTags( prevState => [...prevState, newTag]);
+    setNewTag('');
   }
 
-  function handleDeleteMovie() {
+  function handleDeleteTag(deleted) {
+    setTags(prevState => prevState.filter(movie => movie !== deleted));
+  }
+
+  function handleAddMovie() {
 
   }
 
@@ -37,35 +46,49 @@ export function CreateMovie() {
         <h1>Novo filme</h1>
 
         <div className="input-wrapper">
-          <Input placeholder="Título" />
-          <Input placeholder="Nota (0 a 5)" />
+          <Input 
+            type="text" 
+            placeholder="Título"
+            value={ title }
+            onChange={ e => setTitle(e.target.value) }
+          />
+          <Input 
+            type="number" 
+            placeholder="Nota (0 a 5)" 
+            value={ grade }
+            onChange={ e => e.target.value > 5 ? setGrade('') : setGrade(e.target.value) }
+          />
         </div>
 
-        <TextArea placeholder="Observações"/>
+        <TextArea 
+          placeholder="Observações"
+          value={ description }
+          onChange={ e => setDescription(e.target.value) }
+        />
 
         <h2>Marcadores</h2>
         <div className="tag-creator">
           {
-            movies.map((movie, i) => {
+            tags.map((tag, i) => (
               <TagItem 
               key={ String(i) }
-              value={ movie }
-              onClick={ handleDeleteMovie }
+              value={ tag }
+              onClick={() => handleDeleteTag(tag) }
             />
-            })
+            ))
           }
           <TagItem 
             placeholder="Novo marcador" 
             isNew
-            value={ newMovie }
-            onChange={e => setNewMovie(e.target.value)}
-            onClick={ handleAddMovie }
+            value={ newTag }
+            onChange={e => setNewTag(e.target.value)}
+            onClick={ handleAddTag }
           />
         </div>
 
         <div className="button-wrapper">
           <Button title="Excluir filme" isDelete/>
-          <Button title="Salvar alterações"/>
+          <Button title="Salvar alterações" onClick={ handleAddMovie }/>
         </div>
       </Form>
       
