@@ -1,5 +1,7 @@
 import { Container, Form } from "./styles";
 
+import { useState } from "react"
+
 import { FiArrowLeft } from "react-icons/fi";
 
 import { Header } from "../../components/Header"
@@ -10,6 +12,15 @@ import { TextButton } from "../../components/TextButton"
 import { TagItem } from "../../components/TagItem";
 
 export function CreateMovie() {
+  const [movies, setMovies] = useState([]);
+  const [newMovie, setNewMovie] = useState('');
+
+  function handleAddMovie() {
+    setLink( prevState => [...prevState, newMovie]);
+    setNewMovie('');
+  }
+
+
   return (
     <Container>
 
@@ -30,12 +41,12 @@ export function CreateMovie() {
 
         <h2>Marcadores</h2>
         <div className="tag-creator">
-          <TagItem title="Família"/>
-          <TagItem title="Ficção Científica"/>
-          <TagItem title="Aventura"/>
-
-
-          <TagItem title="Novo marcador" isNew/>
+          <TagItem 
+            placeholder="Novo marcador" 
+            isNew
+            value={ newMovie }
+            onChange={e => setNewMovie(e.target.value)}
+          />
         </div>
 
         <div className="button-wrapper">
