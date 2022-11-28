@@ -1,6 +1,8 @@
 import { Container, Form } from "./styles";
 
 import { useState } from "react"
+import { api } from "../../services/api"
+import { useNavigate } from "react-router-dom";
 
 import { FiArrowLeft } from "react-icons/fi";
 
@@ -12,15 +14,19 @@ import { TextButton } from "../../components/TextButton"
 import { TagItem } from "../../components/TagItem";
 
 export function CreateMovie() {
-  const [title, setTitle] = useState('');
-  const [grade, setGrade] = useState('');
+  const [title,       setTitle]     = useState('');
+  const [rate,        setRate]      = useState('');
+  const [director,    setDirector]  = useState('');
+  const [year,        setYear]      = useState('');
   const [description, setDescription] = useState('');
-  const [tags, setTags] = useState([]);
-  const [newTag, setNewTag] = useState('');
+  const [tags,        setTags]      = useState([]);
+  const [newTag,      setNewTag]    = useState('');
+
+  const navigate = useNavigate();
 
   function handleAddTag() {
     if (!newTag) return;
-    
+
     setTags( prevState => [...prevState, newTag]);
     setNewTag('');
   }
@@ -29,8 +35,27 @@ export function CreateMovie() {
     setTags(prevState => prevState.filter(movie => movie !== deleted));
   }
 
-  function handleAddMovie() {
+  async function handleAddMovie() {
+    await api.post("/movie", {
+      title,
+      description,
+      year,
+      director,
+      rating: rate
+    })
 
+    alert("Filme criado com sucesso")
+    navigate("/")
+  }
+
+  function handleClearMovie() {
+    setTitle('')     
+    setRate('')      
+    setDirector('')  
+    setYear('')      
+    setDescription('')
+    setTags([])      
+    setNewTag('')    
   }
 
 
@@ -55,8 +80,22 @@ export function CreateMovie() {
           <Input 
             type="number" 
             placeholder="Nota (0 a 5)" 
-            value={ grade }
-            onChange={ e => e.target.value > 5 ? setGrade('') : setGrade(e.target.value) }
+            value={ rate }
+            onChange={ e => e.target.value > 5 ? setRate('') : setRate(e.target.value) }
+          />
+        </div>
+        <div className="input-wrapper">
+          <Input 
+            type="text" 
+            placeholder="Diretor"
+            value={ director }
+            onChange={ e => setDirector(e.target.value) }
+          />
+          <Input 
+            type="number" 
+            placeholder="Ano" 
+            value={ year }
+            onChange={ e =>  setYear(e.target.value) }
           />
         </div>
 
@@ -87,8 +126,8 @@ export function CreateMovie() {
         </div>
 
         <div className="button-wrapper">
-          <Button title="Excluir filme" isDelete/>
-          <Button title="Salvar alterações" onClick={ handleAddMovie }/>
+          <Button title="Excluir filme" isDelete onClick={ handleClearMovie } />
+          <Button title="Salvar alterações" onClick={ handleAddMovie } />
         </div>
       </Form>
       

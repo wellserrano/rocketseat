@@ -22,11 +22,15 @@ export const Form = styled.form`
     color: ${ ({ theme }) => theme.COLORS.FF_MOVIE_DESCRIPTION };
   }
 
+  > .input-wrapper:first-of-type {
+    margin-block: 40px 15px;
+  }
+
   .input-wrapper {
     display: flex;
     justify-content: space-between;
     gap: 40px;
-    margin-block: 40px;
+    margin-bottom: 40px;
   }
 
   > textarea {
