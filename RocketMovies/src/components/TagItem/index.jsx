@@ -3,7 +3,7 @@ import {FiX, FiPlus } from 'react-icons/fi'
 
 export function TagItem({ value, isNew=false, onClick, ...rest }) {
   return (
-    <Container isNew={isNew} {...rest}>
+    <Container isNew={isNew}>
       <input 
         type="text" 
         value={ value }

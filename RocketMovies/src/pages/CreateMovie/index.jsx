@@ -16,8 +16,12 @@ export function CreateMovie() {
   const [newMovie, setNewMovie] = useState('');
 
   function handleAddMovie() {
-    setLink( prevState => [...prevState, newMovie]);
+    setMovies( prevState => [...prevState, newMovie]);
     setNewMovie('');
+  }
+
+  function handleDeleteMovie() {
+
   }
 
 
@@ -41,16 +45,26 @@ export function CreateMovie() {
 
         <h2>Marcadores</h2>
         <div className="tag-creator">
+          {
+            movies.map((movie, i) => {
+              <TagItem 
+              key={ String(i) }
+              value={ movie }
+              onClick={ handleDeleteMovie }
+            />
+            })
+          }
           <TagItem 
             placeholder="Novo marcador" 
             isNew
             value={ newMovie }
             onChange={e => setNewMovie(e.target.value)}
+            onClick={ handleAddMovie }
           />
         </div>
 
         <div className="button-wrapper">
-          <Button title="Excluir filme" isNew/>
+          <Button title="Excluir filme" isDelete/>
           <Button title="Salvar alterações"/>
         </div>
       </Form>
