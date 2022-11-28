@@ -34,11 +34,13 @@ export const Form = styled.form`
   }
 
   .tag-creator {
-    width: 100%;
     min-height: 90px;
 
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+
+    padding: 10px 4px;
 
     background-color: ${ ({ theme }) => theme.COLORS.DARK };
 

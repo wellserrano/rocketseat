@@ -30,12 +30,16 @@ export function CreateMovie() {
 
         <h2>Marcadores</h2>
         <div className="tag-creator">
-          <TagItem title="React"/>
-          <TagItem title="Novo marcador" isDelete/>
+          <TagItem title="Família"/>
+          <TagItem title="Ficção Científica"/>
+          <TagItem title="Aventura"/>
+
+
+          <TagItem title="Novo marcador" isNew/>
         </div>
 
         <div className="button-wrapper">
-          <Button title="Excluir filme" isDelete/>
+          <Button title="Excluir filme" isNew/>
           <Button title="Salvar alterações"/>
         </div>
       </Form>
