@@ -1,27 +1,27 @@
 const knex = require("../database/knex")
 const AppError = require("../utils/AppError")
 
-class FavoriteMoviesControllers {
+class TagsControllers {
 
   async read(req, res) {
-    const user_id = req.user.id;
+    // const user_id = req.user.id;
 
-    const favoriteMovies = 
-      await knex("userMovies")
-        .where("userMovies.user_id", user_id)
+    // const tags = 
+    //   await knex("tags")
+    //     .where("tags.user_id", user_id)
 
-    const userData =
-      await knex("users")
-      .where("id", user_id)
-      .first();
+    // const userData =
+    //   await knex("users")
+    //   .where("id", user_id)
+    //   .first();
 
-    const favoritesData = {
-      user_id: user_id,
-      user_name: userData.name,
-      favoriteMovies: favoriteMovies,
-    };
+    // const tagsData = {
+    //   user_id: user_id,
+    //   user_name: userData.name,
+    //   tags,
+    // };
 
-    return res.json(favoritesData);
+    // return res.json(tagsData);
 
   };
 
@@ -74,4 +74,4 @@ class FavoriteMoviesControllers {
 
 };
 
-module.exports = FavoriteMoviesControllers;
+module.exports = TagsControllers;
