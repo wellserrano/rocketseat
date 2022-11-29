@@ -4,24 +4,21 @@ const AppError = require("../utils/AppError")
 class TagsControllers {
 
   async read(req, res) {
-    // const user_id = req.user.id;
-
+    const movie_id = Number(req.query.movie_id)
+    const user_id = req.user.id;
+    
     // const tags = 
     //   await knex("tags")
-    //     .where("tags.user_id", user_id)
+    //   .join("movies", {'movies.id': movie_id, 'movies.user_id': user_id})
+    //   .where({'tags.user_id': user_id, 'tags.movie_id': movie_id})
+    //   .groupBy('tags.id')
 
-    // const userData =
-    //   await knex("users")
-    //   .where("id", user_id)
-    //   .first();
-
-    // const tagsData = {
-    //   user_id: user_id,
-    //   user_name: userData.name,
-    //   tags,
-    // };
-
-    // return res.json(tagsData);
+    const tags = 
+      await knex("tags")
+      .select('name')
+      .where({'tags.user_id': user_id, 'tags.movie_id': movie_id})
+      
+    return res.json(tags);
 
   };
 

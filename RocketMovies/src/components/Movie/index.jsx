@@ -5,18 +5,39 @@ import { AiOutlineStar, AiFillStar} from 'react-icons/ai'
 import { Tag } from "../Tag"
 
 export function Movie({ data }) {
+  function starCount(rating) {
+    let stars = [
+      <AiOutlineStar key={1} />,
+      <AiOutlineStar key={2} />,
+      <AiOutlineStar key={3} />,
+      <AiOutlineStar key={4} />,
+      <AiOutlineStar key={5} />
+    ];
+
+
+    for (let index = 0; index < rating; index++) {
+      stars[index] = <AiFillStar key={index} />
+      
+    }
+    
+    return stars
+
+  }
+
+
   return (
     <Container>
       <h2>{ data.title }</h2>
 
-      <AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiOutlineStar/>
-      
+      {
+        starCount(data.rate)
+      }
+
       <div className="description-container">
         <span> 
           { data.description }
         </span>
       </div>
-
 
       {
         data.tags && 

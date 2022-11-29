@@ -29,10 +29,35 @@ class MoviesControllers {
   };
 
   async read(req, res) {
-      
-      const movies = await knex("movies")
-      return res.status(200).json(movies);
+      const user_id = req.user.id;
 
+      const movies = await knex("movies")
+        .where({user_id})
+
+      // console.log('movies', movies)
+
+      // const tagsAndMovies = [];
+
+      // movies.forEach(async movie => {
+      //   const response = await knex("tags")
+      //     .where({user_id, movie_id: movie.id})
+
+      //   tagsAndMovies.push({...movie, tags: response[0].name})
+      // })   
+      
+      const promises = movies.map(async (movie) => {
+        const response = await knex("tags")
+          .select('name')
+          .where({user_id, movie_id: movie.id})
+
+          const tags = response.map(e => e.name)
+        
+          return {...movie, tags: tags}
+        })
+        
+        const tagsAndMovies = await Promise.all(promises)
+      
+      return res.status(200).json(tagsAndMovies);
     }
     
   async update(req, res) {
