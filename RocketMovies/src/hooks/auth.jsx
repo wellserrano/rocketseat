@@ -46,12 +46,15 @@ function AuthProvider({ children }) {
 
         const response = await api.patch("/user/avatar", fileUploadForm);
         user.avatar = response.data.avatar;
+        console.log('Avatar updated successfully')
       }
 
       await api.put('/user', user)
       localStorage.setItem("@rocketmovies:user", JSON.stringify(user))
       setData({ user, token: data.token})
       alert('Perfil atualizado')
+      console.log('Profile updated successfully', user)
+
 
     } catch (err) {
 

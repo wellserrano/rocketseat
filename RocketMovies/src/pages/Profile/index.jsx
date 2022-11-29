@@ -30,7 +30,7 @@ export function Profile() {
       name,
       email,
       old_password: passwordOld,
-      new_passowrd: passwordNew,
+      new_password: passwordNew,
     }
 
     await updateProfile({user, avatarFile});

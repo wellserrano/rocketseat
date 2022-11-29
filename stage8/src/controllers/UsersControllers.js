@@ -63,22 +63,22 @@ class UsersControllers {
     };
 
     let hashedPassword;
-
+    
     if (old_password && new_password) {
       const checkOldPassword = await compare(old_password, user.password);
       hashedPassword = await hash(new_password, 8);
-
+      
       if (!checkOldPassword) throw new AppError(`Your current password is incorrect`, 400);
     };
-        
+    
     await knex("users")
-      .where({ id: user_id })
-      .update({
-        name: name ?? user.name,
-        email: email ?? user.email,
-        password: hashedPassword ?? user.password,
-        updated_at: knex.fn.now()
-      });
+    .update({
+      name: name ?? user.name,
+      email: email ?? user.email,
+      password: hashedPassword ?? user.password,
+      updated_at: knex.fn.now()
+    })
+    .where({ id: user_id })
 
     return res.status(200).json();
 

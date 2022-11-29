@@ -6,6 +6,8 @@ import { Input } from '../Input';
 
 import { useAuth } from "../../hooks/auth"
 
+import avatarPlaceholder from "../../assets/avatar_placeholder.svg";
+
 export function Header() {
   const { signOut, user } = useAuth();
 
