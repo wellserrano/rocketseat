@@ -26,20 +26,19 @@ class TagsControllers {
   };
 
   async create(req, res) {
-    const { movie_id, rating } = req.body;
+    const { movie_id, tags } = req.body;
     const user_id = req.user.id;
 
-    const checkFavMovie = await knex("userMovies")
-      .where({ user_id, movie_id })
-
-    if (!checkFavMovie) throw new AppError("This Movie has already been favorited", 400)
-
-    await knex("userMovies")
-      .insert({
-        user_id,
+    const tagsInsert = tags.map(tag => {
+      return {
         movie_id,
-        rating,
-      })
+        user_id,
+        name: tag
+      }
+    });
+
+    await knex("tags")
+      .insert(tagsInsert);
 
     return res.status(201).json()
 

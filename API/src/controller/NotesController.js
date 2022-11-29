@@ -31,7 +31,6 @@ class NotesController {
 		await knex("links").insert(linksInsert);
 		await knex("tags").insert(tagsInsert);
 
-		console.log('passei aqui')
 		res.json();
 	};
 

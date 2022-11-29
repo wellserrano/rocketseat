@@ -1,17 +1,18 @@
 import { Container, Form } from "./styles";
 
 import { useState } from "react"
+
 import { api } from "../../services/api"
 import { useNavigate } from "react-router-dom";
 
 import { FiArrowLeft } from "react-icons/fi";
 
-import { Header } from "../../components/Header"
 import { Input } from "../../components/Input"
+import { Header } from "../../components/Header"
 import { Button } from "../../components/Button"
+import { TagItem } from "../../components/TagItem";
 import { TextArea } from "../../components/TextArea"
 import { TextButton } from "../../components/TextButton"
-import { TagItem } from "../../components/TagItem";
 
 export function CreateMovie() {
   const [title,       setTitle]     = useState('');
@@ -36,7 +37,7 @@ export function CreateMovie() {
   }
 
   async function handleAddMovie() {
-    await api.post("/movie", {
+    const response = await api.post("/movie", {
       title,
       description,
       year,
@@ -44,9 +45,17 @@ export function CreateMovie() {
       rating: rate
     })
 
+    const movie_id = response.data[0]
+
+    await api.post("/tags", {
+      movie_id,
+      tags
+    })
+
     alert("Filme criado com sucesso")
     navigate("/")
   }
+
 
   function handleClearMovie() {
     setTitle('')     
