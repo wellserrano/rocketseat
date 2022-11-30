@@ -5,6 +5,7 @@ class MoviesControllers {
 
   async create(req, res) {
     const { title, description, year, director, rating } = req.body;
+    const user_id = req.user.id
 
     const checkMovieExists = await knex("movies")
       .where({ title, year, director })
@@ -14,26 +15,51 @@ class MoviesControllers {
       throw new AppError("Movie already created", 400)
     }
     
-    await knex("movies")
+    const movie_id = await knex("movies")
       .insert({
         title,
         description,
         year,
         director,
-        rating
-      });
-
-    return res.status(201).json();
-
-
-
+        rating,
+        user_id
+      })
+      
+      return res.status(201).json(movie_id);
   };
 
   async read(req, res) {
-      
-      const movies = await knex("movies")
-      return res.status(200).json(movies);
+      const user_id = req.user.id;
+      const { like } = req.query
 
+      const movies = await knex("movies")
+        .where({ user_id })
+        .andWhereLike('title', `${like}%`)
+
+      // console.log('movies', movies)
+
+      // const tagsAndMovies = [];
+
+      // movies.forEach(async movie => {
+      //   const response = await knex("tags")
+      //     .where({user_id, movie_id: movie.id})
+
+      //   tagsAndMovies.push({...movie, tags: response[0].name})
+      // })   
+      
+      const promises = movies.map(async (movie) => {
+        const response = await knex("tags")
+          .select('name')
+          .where({user_id, movie_id: movie.id})
+
+          const tags = response.map(e => e.name)
+        
+          return {...movie, tags: tags}
+        })
+        
+        const tagsAndMovies = await Promise.all(promises)
+      
+      return res.status(200).json(tagsAndMovies);
     }
     
   async update(req, res) {

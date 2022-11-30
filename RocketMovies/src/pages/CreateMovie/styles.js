@@ -22,11 +22,15 @@ export const Form = styled.form`
     color: ${ ({ theme }) => theme.COLORS.FF_MOVIE_DESCRIPTION };
   }
 
+  > .input-wrapper:first-of-type {
+    margin-block: 40px 15px;
+  }
+
   .input-wrapper {
     display: flex;
     justify-content: space-between;
     gap: 40px;
-    margin-block: 40px;
+    margin-bottom: 40px;
   }
 
   > textarea {
@@ -34,11 +38,13 @@ export const Form = styled.form`
   }
 
   .tag-creator {
-    width: 100%;
     min-height: 90px;
 
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+
+    padding: 10px 4px;
 
     background-color: ${ ({ theme }) => theme.COLORS.DARK };
 

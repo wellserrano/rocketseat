@@ -29,7 +29,7 @@ export const Brand = styled.div`
   color: ${ ({ theme }) => theme.COLORS.SAMPLE_D };
 `;
 
-export const Profile = styled(Link)`
+export const Profile = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,5 +62,11 @@ export const Profile = styled(Link)`
     height: 74px;
     border-radius: 50%;
   }
+
+  &:hover {
+    filter: none;
+    cursor: auto;
+  }
+  
 `;
 

@@ -36,8 +36,8 @@ class UserController {
 
     async update(req, res) {
         const { name, email, old_password, new_password, avatar } = req.body;
-        const { id } = req.params;
-
+        const user_id = req.user.id
+        
         const db = await sqliteConnection();
         const user = await db.get(`
             SELECT
@@ -47,7 +47,7 @@ class UserController {
                 avatar 
             FROM users
             WHERE id = ?
-        `, [id]);
+        `, [user_id]);
 
         const userWithUpdatedEmail = await db.get(`
             SELECT *
@@ -87,7 +87,7 @@ class UserController {
             email ?? user.email, 
             avatar ?? user.avatar, 
             hashedPassword, 
-            id
+            user_id
            ]
         );
 
