@@ -3,6 +3,7 @@ import { Container, Content, TitleAndButton } from "./styles";
 import { useState, useEffect } from "react"
 
 import { api } from "../../services/api"
+import { useNavigate } from "react-router-dom";
 
 import { FiPlus } from 'react-icons/fi'
 
@@ -14,6 +15,14 @@ import { Input } from "../../components/Input";
 export function Home() {
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState([]);
+  
+  const navigate = useNavigate();
+
+  function handleMovieDetails(idMovie) {
+    
+    navigate(`/details/${idMovie}`)
+
+  }
 
   useEffect(() => {
 
@@ -49,6 +58,9 @@ export function Home() {
             rate: movie.rating,
             description: movie.description,
             tags: movie.tags
+            }}
+            onClick={() =>{
+              handleMovieDetails(movie.id);
             }}
           />
           ))

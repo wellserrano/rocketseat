@@ -48,4 +48,9 @@ export const Container = styled.div`
   > svg {
     margin-block: 8px 15px;
   }
+
+  :hover {
+    cursor: pointer;
+    opacity: 75%;
+  }
 `;
