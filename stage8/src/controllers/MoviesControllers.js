@@ -30,9 +30,11 @@ class MoviesControllers {
 
   async read(req, res) {
       const user_id = req.user.id;
+      const { like } = req.query
 
       const movies = await knex("movies")
-        .where({user_id})
+        .where({ user_id })
+        .andWhereLike('title', `${like}%`)
 
       // console.log('movies', movies)
 

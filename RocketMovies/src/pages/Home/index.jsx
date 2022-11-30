@@ -9,26 +9,31 @@ import { FiPlus } from 'react-icons/fi'
 import { Movie } from "../../components/Movie";
 import { Header } from "../../components/Header";
 import { Button } from "../../components/Button";
+import { Input } from "../../components/Input";
 
 export function Home() {
   const [movies, setMovies] = useState([]);
+  const [search, setSearch] = useState([]);
 
   useEffect(() => {
 
     async function fetchMovies() {
-      const response = await api.get("/movie");
+      const response = await api.get(`/movie?like=${search}`);
       setMovies(response.data) 
 
     }
 
     fetchMovies();
 
-  }, []);
+  }, [search]);
+
 
   return (
     <Container>
 
-      <Header />
+      <Header >
+        <Input placeholder="Pesquisar pelo título" onChange={ e => setSearch(e.target.value) }/>
+      </Header>
 
       <TitleAndButton>
         <h1>Meus filmes</h1>

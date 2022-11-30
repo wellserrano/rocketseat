@@ -2,22 +2,23 @@ import { Container, Brand, Profile } from './styles';
 import { Link } from 'react-router-dom';
 import { api } from "../../services/api"
 
+import { Children, useEffect, useState } from "react"
+
 import { Input } from '../Input';
 
 import { useAuth } from "../../hooks/auth"
 
 import avatarPlaceholder from "../../assets/avatar_placeholder.svg";
 
-export function Header() {
+export function Header({children}) {
   const { signOut, user } = useAuth();
 
   const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
 
-
   return (
     <Container>
       <Brand>RocketMovies</Brand>
-      <Input placeholder="Pesquisar pelo título" />
+      {children}
       <Profile >
         <div>
           <Link to="/profile">
