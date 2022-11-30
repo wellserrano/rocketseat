@@ -12,8 +12,14 @@ import { Tag } from '../../components/Tag'
 
 import { api } from '../../services/api'
 
+import avatarPlaceholder from "../../assets/avatar_placeholder.svg";
+import { useAuth } from "../../hooks/auth"
+
 export function Details() {
+  const { user } = useAuth();
   const [data, setData] = useState(null)
+
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
 
   const params = useParams();
 
@@ -71,7 +77,7 @@ export function Details() {
                 { starCount(data.rating) } 
               </div>
               <div className="creator-time">
-                <img src="http://github.com/wellserrano.png" alt="User picture" />
+                <img src={ avatarUrl } alt="User picture" />
                 <p>Por { data.user_name }</p>
                 <FiClock onClick={test}/>
                 <p>{ data.updated_at }</p>
