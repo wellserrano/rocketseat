@@ -18,8 +18,10 @@ export function Home() {
   
   const navigate = useNavigate();
 
-  function toMovie(id) {
-    navigate(`/details?id=${id}`)
+  function handleMovieDetails(idMovie) {
+    
+    navigate(`/details/${idMovie}`)
+
   }
 
   useEffect(() => {
@@ -57,7 +59,9 @@ export function Home() {
             description: movie.description,
             tags: movie.tags
             }}
-            onClick={() => toMovie(movie.id) }
+            onClick={() =>{
+              handleMovieDetails(movie.id);
+            }}
           />
           ))
        }

@@ -30,35 +30,44 @@ class MoviesControllers {
 
   async read(req, res) {
       const user_id = req.user.id;
-      const { like } = req.query
+      const { like, id } = req.query
 
-      const movies = await knex("movies")
-        .where({ user_id })
-        .andWhereLike('title', `${like}%`)
+      let tagsAndMovies;
 
-      // console.log('movies', movies)
+      if (!id) {
+        const movies = await knex("movies")
+          .where({ user_id })
+          .andWhereLike('title', `${like}%`)
+  
+         const promises = movies.map(async (movie) => {
+          const response = await knex("tags")
+            .select('name')
+            .where({user_id, movie_id: movie.id})
+  
+            const tags = response.map(e => e.name)
+          
+            return {...movie, tags: tags}
+          })
+          
+          tagsAndMovies = await Promise.all(promises)
 
-      // const tagsAndMovies = [];
+      } else {
 
-      // movies.forEach(async movie => {
-      //   const response = await knex("tags")
-      //     .where({user_id, movie_id: movie.id})
+        const movie = await knex("movies")
+          .select('movies.*', 'users.name as user_name')
+          .join('users', 'movies.user_id', 'users.id')
+          .where({'movies.id': id })
+          .first()
 
-      //   tagsAndMovies.push({...movie, tags: response[0].name})
-      // })   
-      
-      const promises = movies.map(async (movie) => {
-        const response = await knex("tags")
+          const response = await knex("tags")
           .select('name')
-          .where({user_id, movie_id: movie.id})
+          .where({user_id, movie_id: id})
 
-          const tags = response.map(e => e.name)
+        const tags = response.map(e => e.name)
         
-          return {...movie, tags: tags}
-        })
-        
-        const tagsAndMovies = await Promise.all(promises)
-      
+        tagsAndMovies = await {...movie, tags: tags} 
+      }
+
       return res.status(200).json(tagsAndMovies);
     }
     
